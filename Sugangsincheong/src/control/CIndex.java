@@ -19,9 +19,4 @@ public class CIndex {
 		return vIndexVector;
 	}
 
-	public Vector<VIndex> getTerminal(String parentFileName) {
-		Vector<VIndex> vIndexVector = this.mIndex.terminal(parentFileName);
-		return vIndexVector;
-	}
-
 }

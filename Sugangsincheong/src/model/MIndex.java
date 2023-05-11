@@ -28,23 +28,5 @@ public class MIndex {
 		return vindexVector;
 	}
 	
-	public Vector<VIndex> terminal(String fileName) {
-		Vector<VIndex> vindexVector = null;		
-		try {
-		Scanner File = new Scanner(new File(fileName));
-		vindexVector = new Vector<VIndex>();
-		while(File.hasNext()) {
-			VIndex vIndex = new VIndex();
-			vIndex.loadTermianl(File);
-			vindexVector.add(vIndex);
-
-		}
-		
-		File.close();
 	
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		return vindexVector;
-	}
 }
