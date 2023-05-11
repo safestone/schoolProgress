@@ -6,15 +6,16 @@ import java.util.Scanner;
 import java.util.Vector;
 
 import valueObject.VIndex;
+import valueObject.VLecture;
 
 public class MLecture {
-	public Vector<VIndex> terminal(String fileName) {
-		Vector<VIndex> vindexVector = null;		
+	public Vector<VLecture> terminal(String fileName) {
+		Vector<VLecture> vindexVector = null;		
 		try {
 		Scanner File = new Scanner(new File(fileName));
-		vindexVector = new Vector<VIndex>();
+		vindexVector = new Vector<VLecture>();
 		while(File.hasNext()) {
-			VIndex vIndex = new VIndex();
+			VLecture vIndex = new VLecture();
 			vIndex.loadTermianl(File);
 			vindexVector.add(vIndex);
 

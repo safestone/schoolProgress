@@ -8,17 +8,17 @@ import valueObject.VUserInfo;
 public class Main {
 
 	private void run() {
-		Scanner sc = new Scanner(System.in);
+		Scanner keyboard = new Scanner(System.in);
 		PLogin pLogin = new PLogin();
-		VUserInfo vUserInfo = pLogin.login(sc);
+		VUserInfo vUserInfo = pLogin.login(keyboard);
 		
 		if(vUserInfo != null) {
 			PSugangsincheong pSugangsincheong = new PSugangsincheong();
-			pSugangsincheong.run(vUserInfo, sc);
+			pSugangsincheong.run(vUserInfo, keyboard);
 		} else {
 			
 		}
-		sc.close();
+		keyboard.close();
 		
 		
 		

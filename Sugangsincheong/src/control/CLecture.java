@@ -4,6 +4,7 @@ import java.util.Vector;
 
 import model.MLecture;
 import valueObject.VIndex;
+import valueObject.VLecture;
 
 public class CLecture {
 	private MLecture mLecture;
@@ -11,8 +12,8 @@ public class CLecture {
 	public CLecture() {
 		this.mLecture = new MLecture();
 	}
-	public Vector<VIndex> getTerminal(String string) {
-		Vector<VIndex> vLectureVector = this.mLecture.terminal(string);
+	public Vector<VLecture> getTerminal(String string) {
+		Vector<VLecture> vLectureVector = this.mLecture.terminal(string);
 		return vLectureVector;
 	}
 
