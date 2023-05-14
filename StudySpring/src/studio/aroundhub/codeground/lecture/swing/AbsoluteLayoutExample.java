@@ -12,7 +12,7 @@ public class AbsoluteLayoutExample extends JFrame {
 
     public AbsoluteLayoutExample() {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-
+       
         this.setSize(400,400);
 
         this.setLayout(null); //레이아웃을 정하지 않음 위치를 직접 지정함
