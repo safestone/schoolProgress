@@ -57,5 +57,8 @@ public class VLecture {
 		this.setTime(file.next());
 		this.setProfessor(file.next());		
 	}
+	public void show() {
+		System.out.println(this.getCode() + " " + this.getName() + " " + this.getCredit() + " " + this.getTime() + " " + this.getProfessor());
+	}
 
 }
