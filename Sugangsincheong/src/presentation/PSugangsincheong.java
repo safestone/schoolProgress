@@ -43,6 +43,7 @@ public class PSugangsincheong {
 				break;
 			case 9:
 				bRunning = false;
+				System.out.println("종료되었습니다.");
 				break;
 			default:
 				break;

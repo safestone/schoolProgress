@@ -6,14 +6,20 @@ import valueObject.VUserInfo;
 
 
 public class Main {
-
+	private Scanner keyboard;
+	private PLogin pLogin;
+	private PSugangsincheong pSugangsincheong;
+	
+	public Main() {
+		
+	}
 	private void run() {
 		Scanner keyboard = new Scanner(System.in);
-		PLogin pLogin = new PLogin();
+		pLogin = new PLogin();
 		VUserInfo vUserInfo = pLogin.login(keyboard);
 		
 		if(vUserInfo != null) {
-			PSugangsincheong pSugangsincheong = new PSugangsincheong();
+			pSugangsincheong = new PSugangsincheong();
 			pSugangsincheong.run(vUserInfo, keyboard);
 		} else {
 			
