@@ -1,4 +1,4 @@
-package mySelf;
+package lecture;
 
 import java.awt.Dimension;
 
