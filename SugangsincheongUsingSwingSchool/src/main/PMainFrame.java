@@ -18,10 +18,8 @@ public class PMainFrame extends JFrame{
 	public PMainFrame() {
 		this.setSize(600, 400);
 		
-//		pLogin = new PLogin();
 		pSugangsincheong = new PSugangsincheong();
 		
-//		this.add(pLogin);
 		this.add(pSugangsincheong);
 	}
 	

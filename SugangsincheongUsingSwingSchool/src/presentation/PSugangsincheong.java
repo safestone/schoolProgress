@@ -2,12 +2,10 @@ package presentation;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.LayoutManager;
 import java.util.Scanner;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -18,26 +16,25 @@ public class PSugangsincheong extends JPanel {
 	private PLectureSelection pLectureSelection;
 	private PLectureBasket pMiridamgiBasket;
 	private PLectureBasket pSincheongBaskt;
-
-	JButton btn1, btn2, btn3, btn4;
 	
 	public PSugangsincheong() {
 		this.setBackground(Color.black);
-		this.setSize(600, 400);
-		this.setLayout(new GridLayout());
-		this.setVisible(true);
+		LayoutManager layoutManager = new BoxLayout(this, BoxLayout.X_AXIS);
+		this.setLayout(layoutManager);
 		
 		this.pLectureSelection = new PLectureSelection();
-		this.pLectureSelection.setBackground(Color.RED);
-		this.add(this.pLectureSelection);
-
 		this.pMiridamgiBasket = new PLectureBasket();
-		this.pMiridamgiBasket.setBackground(Color.BLUE);
-		this.add(this.pMiridamgiBasket);
-
 		this.pSincheongBaskt = new PLectureBasket();
-		this.pSincheongBaskt.setBackground(Color.GREEN);
+		
+		this.add(this.pLectureSelection);
+		this.pLectureSelection.setBackground(Color.RED);
+		
+		this.add(this.pMiridamgiBasket);
+		this.pMiridamgiBasket.setBackground(Color.BLUE);
+		
 		this.add(this.pSincheongBaskt);
+		this.pSincheongBaskt.setBackground(Color.GREEN);
+		
 		
 	}
 	

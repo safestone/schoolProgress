@@ -4,62 +4,85 @@ import java.awt.Color;
 import java.util.Scanner;
 import java.util.Vector;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 
 import control.CIndex;
 import control.CLecture;
-import presentation.PLectureSelection.PSelection;
 import valueObject.VIndex;
 import valueObject.VLecture;
 import valueObject.VUserInfo;
 
 public class PLectureSelection extends JPanel {
-	private CIndex cIndex;
 	private CLecture CLecture;
 	
-	JLabel label;
-	
 	private class PSelection extends JTable {
-		public PSelection(String[][] contents, String[] title) {
-			super(contents, title);
+		private CIndex cIndex;
+
+		public PSelection(String titleName, String fileName) {
+
+			String[] title = new String[1];
+			title[0] = titleName;
+			DefaultTableModel tableModel = new DefaultTableModel(title, 0);
+			this.setModel(tableModel);
+			
+			RowSelectionListener select = new RowSelectionListener();
+			this.getSelectionModel().addListSelectionListener(select);
+			
+			this.cIndex = new CIndex();
+			
+			Vector<VIndex> vIndexVector = cIndex.getVIndexVector("data/"+fileName+".txt");
+			for(VIndex vIndex: vIndexVector) {
+				System.out.println(vIndex.getCode() + " " + vIndex.getName());	
+				String[] row = new String[1];
+				row[0] = vIndex.getName();
+				tableModel.addRow(row);
+			}
+			
+
 		}
 	}
 	
-	public PLectureSelection() {
-		String[] title = new String[1];
-		String[][] contents = new String[1][2];
+	private class RowSelectionListener implements ListSelectionListener {
+
+		@Override
+		public void valueChanged(ListSelectionEvent e) {
+			int FirstIndex = e.getFirstIndex();
+			System.out.println(FirstIndex);
+			int LastIndex = e.getLastIndex();
+			System.out.println(LastIndex);
+		}
 		
-		PSelection PCampus = new PSelection(contents, title);
-		JScrollPane scrollPane = new JScrollPane(PCampus);
+	}
+	
+	public PLectureSelection() {
+
+		
+
+		PSelection pCampus = new PSelection("캠퍼스", "Root");
+		JScrollPane scrollPane = new JScrollPane(pCampus);
+		this.add(scrollPane); 
+		
+		PSelection PCollege = new PSelection("대학", "Root");
+		scrollPane = new JScrollPane(PCollege);
 		this.add(scrollPane);
 		
-		label = new JLabel("강좌 선택");
-		this.add(label);
+		PSelection PDepartment = new PSelection("학과", "Root");
+		scrollPane = new JScrollPane(PDepartment);
+		this.add(scrollPane); 
 		
-		cIndex = new CIndex();
 		CLecture = new CLecture();
+		this.setBackground(Color.GRAY);
+		
 	}
 	
 	private String selectIndex(String message, String fileName, Scanner keyboard) {
 		System.out.println(message);
-		Vector<VIndex> vIndexVector = cIndex.getVIndexVector("data/"+fileName+".txt");
-		for(VIndex vIndex: vIndexVector) {
-			System.out.println(vIndex.getCode() + " " + vIndex.getName());	
-		}
-		if((vIndexVector.get(0).getCode() % 10) == 0) {
-			String command = keyboard.next();
-			int selection = Integer.parseInt(command);
-			String selectedFileName = vIndexVector.get(selection % 10).getFileName();
-			return selectedFileName;
-		} else if ((vIndexVector.get(0).getCode() % 10) == 1) {
-			String command = keyboard.next();
-			int selection = Integer.parseInt(command);
-			String selectedFileName = vIndexVector.get((selection % 10) - 1).getFileName();
-			return selectedFileName;
-		}
+		
 		return null;
 
 	}

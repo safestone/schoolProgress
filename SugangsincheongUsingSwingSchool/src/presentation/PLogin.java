@@ -23,24 +23,6 @@ public class PLogin extends JPanel{
 	
 	public PLogin() {
 		pSugangsincheon = new PSugangsincheong();
-		
-		this.setSize(600, 400);
-		this.setBackground(Color.CYAN);	
-		this.setLayout(null);
-		this.setVisible(true);
-		
-		btn1 = new JButton("다른 창 띄우기");
-		btn1.setBounds(50, 150, 200, 100);
-		btn1.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				pSugangsincheon.setVisible(true);
-			}
-			
-		});
-		this.add(btn1);
 	}
 	
 	public VUserInfo login(Scanner sc) {
